@@ -76,10 +76,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Expenses(models.Model):
     employee = models.ForeignKey(User,models.CASCADE)
     date = models.DateTimeField(auto_now=True)
+    travel_date = models.DateField(null=True, blank=True)
+    airfare = models.IntegerField(null=True, blank=True)
     hotel_rent = models.IntegerField(null=True, blank=True)
     transport = models.IntegerField(null=True, blank=True)
     meal = models.IntegerField(null=True, blank=True)
     others = models.IntegerField(null=True, blank=True)
+    remarks = models.TextField(null=True, blank=True)
     form_status = models.BooleanField(default=None, null=True, blank=True)
     total_amount = models.IntegerField(null=True, blank=True)
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, blank=True, null=True)
